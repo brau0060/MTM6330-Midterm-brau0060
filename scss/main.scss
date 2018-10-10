@@ -1,0 +1,96 @@
+@import 'normalize';
+@import 'default';
+
+.body{
+    margin: 1rem;
+    }
+.socalnav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1rem;
+    background-color: #111;
+    
+    img{
+        padding-right: 1rem;
+        width: 20px;
+    }
+
+}
+$mediumGray: #818181;
+.box{
+    background-color: #111215;
+    border-radius: 10px;
+    width: 100%;
+    height: 1080px;
+    margin: 0 auto;
+}
+.navbox nav ul{
+    
+    width: 100%;
+    max-width: 400px;
+    min-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    $hexgonWidth: 60px;
+    $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
+    $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.8);
+    li{
+        padding: 3px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
+        width: 0px;
+        min-height: $hexgonWidth;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+        
+    }
+    li a{
+        width: $hexgonWidth;
+        height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px $mediumGray solid;
+        border-bottom: 1px $mediumGray solid; 
+    }
+    li a::before,li a::after{
+            content:'';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-top: 1px $mediumGray solid;
+            border-bottom: 1px $mediumGray solid;  
+        }
+        li a::before{
+            transform: rotate(-60deg);
+        }
+        li a::after{
+            transform: rotate(60deg);
+        }
+    
+    img{
+        width: 100%;
+    }
+
+    li:nth-child(1) a{
+        border: none;
+    }
+
+    li:nth-child(1) a::before, li:nth-child(1) a::after{
+        border: none;
+        }
+// clears boarder on placeholder hex
+    .placeholder a,.placeholder a::before,.placeholder a::after  {
+        border: none;
+        }
+        li:nth-child(2n){
+            top: $hexgonPadding;
+        }
+
+}
