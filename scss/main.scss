@@ -1,96 +1,428 @@
 @import 'normalize';
 @import 'default';
+@import 'navstyle';
+@import 'animation';
+.home .box {
+    background-size: cover;
+    background-image: url('./img/home-bg.png');
+    background-attachment: fixed;
+}
 
-.body{
-    margin: 1rem;
-    }
-.socalnav{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.body {
     padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    .home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .brand {
+            animation: slideInLeft 0.5s ease-in;
+            display: flex;
+            display: none;
+            margin-right: 5rem;
+            img {
+                width: 100%;
+                position: relative;
+                @media screen and (min-width: 700px) {
+                    padding: 150px 0 150px 0;
+                }
+                @media screen and (min-width: 1200px) {
+                    padding: 200px 0 200px 0;
+                }
+                @media screen and (min-width: 1400px) {
+                    padding: 300px 0 300px 0;
+                }
+                @media screen and (min-width: 1600px) {
+                    padding: 340px 0 340px 0;
+                    width: 70%;
+                    margin-right: 20rem;
+                }
+            }
+
+            @media screen and (min-width: 700px) {
+                display: block;
+            }
+        }
+    }
+}
+
+/*--------------- social nav -------------------*/
+
+//social media navigation/footer style
+.socalnav,
+footer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     background-color: #111;
-    
-    img{
-        padding-right: 1rem;
-        width: 20px;
+    li {
+        padding: 0.5rem 0rem 0.5rem 1rem;
+    }
+    a {
+        opacity: 0.5;
+    }
+    img:hover,
+    a:hover {
+        opacity: 0.9;
     }
 
 }
-$mediumGray: #818181;
-.box{
-    background-color: #111215;
-    border-radius: 10px;
+
+// box headers
+header {
+    position: relative;
     width: 100%;
-    height: 1080px;
     margin: 0 auto;
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+    h1,
+    p {
+        width: 20%;
+        margin: 0 auto;
+    }
+    p {
+        font-style: italic;
+    }
+
+    @media screen and (min-width: 800px) {
+        width: 50%;
+    }
 }
-.navbox nav ul{
-    
+
+// ads 4rem padding to the second box
+.box:nth-child(2) {
+    padding-bottom: 4rem;
+}
+
+/*--------------- Service section -------------------*/
+
+// centers the services logo hexagon
+.logo .navbox {
+    position: relative;
+    top: -50px;
+    right: 40px;
+}
+
+// sets the boarder colors for the services hexagons
+.logo .navbox .text,
+.logo .navbox .text::before,
+.logo .navbox .text::after {
+    border-color: $highlight;
+}
+
+.web .navbox .text,
+.web .navbox .text::before,
+.web .navbox .text::after {
+    border-color: $blue;
+
+}
+
+.web .navbox .orange,
+.web .navbox .orange::before,
+.web .navbox .orange::after {
+    border-color: $orange;
+
+}
+
+.compatible {
+    margin-top: 3rem;
+    p {
+        margin-top: 0;
+        margin-left: 0.5rem;
+    }
+    @media screen and (min-width: 700px) {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+        p {
+            margin-top: 0;
+            margin-left: 0.5rem;
+        }
+    }
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        justify-content: center;
+        background-color: $primary;
+        border-radius: 10px;
+        border: 4px solid #111;
+        width: 100%;
+
+        @media screen and (min-width: 700px) {
+
+            justify-content:left;
+            width: 60%;
+            height: 100%;
+        }
+        li {
+            border-right: 4px solid #111;
+        }
+        li:nth-child(5) {
+            border-right: none;
+        }
+        img {
+            width: 70%;
+            position: relative;
+            padding: 2px 10px 2px 10px;
+
+        }
+
+        @media screen and (min-width: 900px) {
+            width: 40%;
+        }
+    }
+
+}
+
+/*--------------- contact section -------------------*/
+
+.contact {
+
     width: 100%;
-    max-width: 400px;
-    min-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    $hexgonWidth: 60px;
-    $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
-    $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.8);
-    li{
-        padding: 3px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
-        width: 0px;
-        min-height: $hexgonWidth;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../../img/home-bg2.png') !important;
+    background-attachment: fixed;
+    background-position: 1rem 10rem;
+
+
+    .contactinfo {
+        // aligns twitter logo and name as a lis using flex column
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+
+        @media screen and (min-width: 1400px) {
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            width: 80%;
+        } //twiter box
+        .socal {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+        // twitter button style, aligns logo in center
+        .twitterbtn {
+            margin-top: 1rem;
+            width: 100px;
+            height: 100px;
+            background-color: $highlight;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            border-radius: 50%;
+
+            a {
+                color: $lowlight;
+            }
+
+
+        }
+
+        h3 {
+            margin-top: -1rem;
+            color: $highlight;
+        }
+        /*-----contact form -----*/
+        .form {
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        form {
+            color: $darkGray;
+            margin: 0 auto;
+            width: 100%;
+
+
+            @media screen and (min-width: 1000px) {
+                width: 800px;
+            }
+            @media screen and (min-width: 1400px) {
+                width: 600px;
+            }
+
+
+            fieldset,
+            input,
+            textarea {
+                border: none;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0.5rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            textarea {
+                height: 200px;
+
+            }
+
+            input:focus,
+            textarea:focus {
+                border-color: $highlight;
+                transition: 0.5s;
+
+            }
+
+            input,
+            textarea {
+                font-weight: 500;
+                border-radius: 3px;
+                border: 2px solid $darkGray;
+                background-color: $mediumGray;
+                color: $darkGray;
+                border-radius: 5px;
+            }
+            label {
+                width: 100%;
+                padding-top: 1rem;
+                padding-bottom: 0.3rem;
+            }
+            /*ALL PLACEHOLDER COLORS ARE GRAY*/
+            input::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: $darkGray;
+            }
+
+            input::-moz-placeholder {
+                /* Firefox 19+ */
+                color: $darkGray;
+            }
+
+            input:-ms-input-placeholder {
+                /* IE 10+ */
+                color: $darkGray;
+            }
+
+            input:-moz-placeholder {
+                /* Firefox 18- */
+                color: $darkGray;
+            }
+
+            /*ALL INPUT COLORS ARE GRAY*/
+            textarea::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                color: $darkGray;
+            }
+
+            textarea::-moz-placeholder {
+                /* Firefox 19+ */
+                color: $darkGray;
+            }
+
+            textarea:-ms-input-placeholder {
+                /* IE 10+ */
+                color: $darkGray;
+            }
+
+            textarea:-moz-placeholder {
+                /* Firefox 18- */
+                color: $darkGray;
+            }
+
+
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            width: 30%;
+            border-radius: 5px;
+            text-align: center;
+            color: $highlight;
+            border: 2px solid $highlight;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgba($highlight, 0.2);
+            transition: 0.3s;
+        }
+    }
+}
+
+/*--------------- footer -------------------*/
+
+footer,
+.socalnav {
+    align-content: center;
+    font-size: 1.4rem; // spaces the center between height
+    img {
+        width: 80px;
+        opacity: 0.3;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    a {
+        opacity: 0.5;
+    }
+    img:hover,
+    a:hover {
+        opacity: 0.9;
+    }
+}
+
+// Make services display as a row in desktop
+@media screen and (min-width: 1001px) {
+    //services box  
+    .options {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
         flex-direction: row;
-        position: relative;
-        
-    }
-    li a{
-        width: $hexgonWidth;
-        height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-top: 1px $mediumGray solid;
-        border-bottom: 1px $mediumGray solid; 
-    }
-    li a::before,li a::after{
-            content:'';
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            border-top: 1px $mediumGray solid;
-            border-bottom: 1px $mediumGray solid;  
-        }
-        li a::before{
-            transform: rotate(-60deg);
-        }
-        li a::after{
-            transform: rotate(60deg);
-        }
-    
-    img{
         width: 100%;
+        justify-content: center;
+        align-items: center;
+
+    } // aligns hexagons together
+    .stream,
+    .logo,
+    .web,
+    .portfoliobtn {
+        width: 226px;
+
     }
-
-    li:nth-child(1) a{
-        border: none;
+    .stream {
+        position: relative;
+        top: 2px;
     }
+    .web {
+        position: relative;
+        bottom: 51px;
+        left: 11px;
+    }
+}
 
-    li:nth-child(1) a::before, li:nth-child(1) a::after{
-        border: none;
-        }
-// clears boarder on placeholder hex
-    .placeholder a,.placeholder a::before,.placeholder a::after  {
-        border: none;
-        }
-        li:nth-child(2n){
-            top: $hexgonPadding;
-        }
+@media screen and (min-width: 1400px) {
 
+    .box {
+        // aligns hexagons together
+        .stream,
+        .logo,
+        .web,
+        .portfoliobtn {
+            width: 276px;
+
+        }
+        .stream {
+            position: relative;
+            top: 14px;
+            left: 6px;
+        }
+        .web {
+            position: relative;
+            bottom: 51px;
+            left: 28px;
+        }
+    }
 }

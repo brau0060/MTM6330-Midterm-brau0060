@@ -1,0 +1,220 @@
+@import 'animation';
+
+.navbox nav ul{
+    //sets width value to a varable
+    $navwidth: 350px;
+    // sets the nav width to a fix value that the $navwidth varable has.
+    max-width: $navwidth;
+    min-width: $navwidth;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    // sets the hexagon width and padding relative to the nav width using css calc function.
+    // doing this will make the hexagons scale with the nav box
+    $hexgonWidth: calc(#{$navwidth} * 0.15);
+    $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
+    $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.75);
+    animation: zoomIn 0.5s ease-in;
+  
+    li{
+        left: 10px;
+        margin: 7px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
+        width: 0px;
+        min-height: $hexgonWidth;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+        
+    }
+
+    li img{
+        position: relative;
+        top: 15px;
+        width: 80px;
+    }
+    .twitter img {
+        top: 3px;
+        opacity: 0.4;
+        width: 60px;
+    }
+    
+    .tag{
+        position: relative;
+        top: 15px;
+        font-style: italic;
+    }
+    li .text{
+        // sets the hexagon padding relative to the nav width using the varables.
+        // this will create the right spacing
+        width: $hexgonWidth;
+        height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px $mediumGray solid;
+        border-bottom: 1px $mediumGray solid; 
+        z-index: 1;
+        white-space: nowrap;
+        
+    }
+    li .text::before,li .text::after{
+        // sets a border to the rectangles of the nav item to produce the hexagon shape
+            content:'';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-top: 1px $mediumGray solid;
+            border-bottom: 1px $mediumGray solid;  
+        }
+        // transforms the rectangle before and after to create a hexagon with the nav item box, and the rotated before and after box
+        li .text::before{
+            transform: rotate(-60deg);
+        }
+        li .text::after{
+            transform: rotate(60deg);
+        }
+    
+    img{
+        width: 100%;
+    }
+
+    li:nth-child(1) .text{
+        border: none;
+    }
+    // clears boarder on the first hexagons (this contains the logo)
+    li:nth-child(1) .text::before, li:nth-child(1) .text::after{
+        border: none;
+    }
+    // clears boarder on placeholder hexagons
+    .placeholder .text,.placeholder .text::before,.placeholder .text::after  {
+        border: none;
+    }
+        // adds top padding to every second hexagon
+    li:nth-child(2n){
+            top: $hexgonPadding;
+    }
+}
+.web{
+    li:nth-child(3){
+        top: 3px;
+    }
+}
+.home .navbox {
+    // adds a hover effect to the nav li elements
+    li .text:hover, li .text:hover::before, li .text:hover::after{
+    background-color: rgba($primary, 0.2);
+    border-color: $highlight;
+    transition: 0.5s;
+}
+.active,.active::before,.active::after {
+    border-color: $highlight; 
+    
+}
+}
+.topnav .navbox nav ul{
+    display:none;
+}
+/*--------------- hexagon pattern for 1001px screens and bigger-------------------*/
+@media screen and (min-width: 1001px) {
+    .navbox nav ul{
+        $navwidth: 400px;
+        max-width: $navwidth;
+        min-width: $navwidth;
+        $hexgonWidth: calc(#{$navwidth} * 0.15);
+        $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
+        $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.75);
+    li{
+        left: 10px;
+        margin: 7px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
+        min-height: $hexgonWidth;
+    }
+
+    
+    li .text{
+        width: $hexgonWidth;
+        height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
+        border-top: 1px $mediumGray solid;
+        border-bottom: 1px $mediumGray solid; 
+        
+    }
+    li .text::before,li .text::after{
+            content:'';
+
+            border-top: 1px $mediumGray solid;
+            border-bottom: 1px $mediumGray solid;  
+        }
+        // adds top padding to every second hexagon
+    li:nth-child(2n){
+            top: $hexgonPadding;
+    }
+}
+// this is the styling and calc for the side nav on the home page
+.topnav .navbox nav ul{
+    display: flex;
+    $navwidth: 350px;
+    max-width: $navwidth;
+    min-width: $navwidth;
+    $hexgonWidth: calc(#{$navwidth} * 0.15);
+    $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
+    $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.75);
+li{
+    left: 10px;
+    margin: 7px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
+    min-height: $hexgonWidth;
+}
+
+li .text{
+    width: $hexgonWidth;
+    height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
+    
+}
+li .text::before,li .text::after{
+        content:'';
+    }
+    // adds top padding to every second hexagon
+li:nth-child(2n){
+        top: $hexgonPadding;
+}
+.active,.active::before,.active::after {
+    border-color: $highlight; 
+}
+}
+}
+/*--------------- hexagon pattern for 1400px screens and bigger-------------------*/
+@media screen and (min-width: 1400px) {
+    .navbox nav ul{
+        $navwidth: 500px;
+        max-width: $navwidth;
+        min-width: $navwidth;
+        $hexgonWidth: calc(#{$navwidth} * 0.15);
+        $hexgonPadding: calc( #{$hexgonWidth} * 0.875 );
+        $hexgonPaddingLeft: calc( #{$hexgonPadding} *0.75);
+    li{
+        margin: 7px $hexgonPadding $hexgonPaddingLeft $hexgonPaddingLeft;
+        min-height: $hexgonWidth;
+    }
+
+    li .text{
+        width: $hexgonWidth;
+        height: calc( 0.71 * #{$hexgonWidth} + #{$hexgonWidth});
+        border-top: 1px $mediumGray solid;
+        border-bottom: 1px $mediumGray solid; 
+    }
+    li .text::before,li .text::after{
+            content:'';
+            border-top: 1px $mediumGray solid;
+            border-bottom: 1px $mediumGray solid;  
+        }
+
+        // adds top padding to every second hexagon
+    li:nth-child(2n){
+            top: $hexgonPadding;
+    }
+}
+
+}

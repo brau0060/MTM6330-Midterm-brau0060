@@ -1,14 +1,79 @@
-body{
+// colors
+$lightGray: #cececf;
+$mediumGray: #818181;
+$darkGray: #4e4e4e;
+$primary: #19191d;
+$secondary: #111215;
+$highlight: #ff3f3f;
+$lowlight: #8f2222;
+
+$blue: #01aef0;
+$orange: #ff8c3f;
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
     color: #82868e;
     background-color: #19191d;
-    a{
+    .home {
+        background-size: contain;
+        background-image: url('../../img/home-bg.png') !important;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    a {
         color: #82868e;
         text-decoration: none;
     }
-    li{
+    li {
         list-style: none;
         text-decoration: none;
+    }
+    h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+
+    }
+    h3 {
+        font-size: 1.03rem;
+        font-weight: 600;
+    }
+    label {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+    } // main item boxes style
+    .box {
+        background-color: $secondary;
+        border-radius: 10px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        max-width: 1920px;
+    }
+    .top {
+        display: none;
+        position: fixed;
+        right: 77px;
+        top: 100px;
+        font-size: 1rem;
+        font-weight: 100;
+        opacity: 0.3;
+        @media screen and (min-width: 700px) {
+            display: flex;
+        }
+        a p {
+            position: fixed;
+            top: 100px;
+            right: 69px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    }
+    .top:hover {
+        opacity: 1;
+        transition: 1s;
+    }
+    .topnav {
+        position: absolute;
     }
 }
